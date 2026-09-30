@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $host = 'localhost';
-$dbname = 'restaurant-native';
+$dbname = 'restaurant_native';
 $username = 'root';
 $password = '';
 
