@@ -2,13 +2,12 @@
 require_once __DIR__ . '/config/db.php';
 checkAuth();
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-///////////////////////////////////////////////////////////
-// 1- catch id
-// 2- delete record
-///////////////////////////////////////////////////////////
-
-
+    $sql = "DELETE FROM orders WHERE id = $id";
+    $pdo->query($sql);
+}
 
 header("Location: index.php");
 exit;
