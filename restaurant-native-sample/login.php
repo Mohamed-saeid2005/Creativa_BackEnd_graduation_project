@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="container" style="max-width: 400px; margin-top: 80px;">
     <h2>تسجيل الدخول</h2>
-    <p style="margin-bottom: 15px; color: #666; font-size: 13px;">الحساب التجريبي: admin@restaurant.com / password123</p>
+    <p style="margin-bottom: 15px; color: #666; font-size: 13px;">الحساب التجريبي: admin@restaurant.com / password</p>
     
     <?php if ($error): ?>
         <div class="alert-error"><?= htmlspecialchars($error) ?></div>
