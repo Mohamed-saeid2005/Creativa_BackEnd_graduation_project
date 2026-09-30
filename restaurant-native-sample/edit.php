@@ -2,14 +2,39 @@
 require_once __DIR__ . '/config/db.php';
 checkAuth();
 
+$id = '';
 
-///////////////////////////////////////////////////////////
-// 1- catch id
-// 2- get the record (fetch)
-// 3- catch all sended data (from form -post request-)
-// 4- update record
-///////////////////////////////////////////////////////////
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
 
+$sql = "SELECT * FROM orders WHERE id = $id";
+$result = $pdo->query($sql);
+$order = $result->fetch();
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $customer_name = $_POST['customer_name'];
+    $table_number = $_POST['table_number'];
+    $items = $_POST['items'];
+    $total_price = $_POST['total_price'];
+    $status = $_POST['status'];
+
+    $sql = "UPDATE orders SET
+            customer_name = '$customer_name',
+            table_number = '$table_number',
+            items = '$items',
+            total_price = '$total_price',
+            status = '$status'
+            WHERE id = $id";
+
+    $pdo->query($sql);
+
+    header("Location: index.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
