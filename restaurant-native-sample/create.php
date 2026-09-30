@@ -2,13 +2,26 @@
 require_once __DIR__ . '/config/db.php';
 checkAuth();
 
+$error = '';
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-///////////////////////////////////////////////////////////
-// 1- catch all sended data (from form -post request-)
-// 2- insert record
-///////////////////////////////////////////////////////////
+    $customer_name = $_POST['customer_name'];
+    $table_number = $_POST['table_number'];
+    $items = $_POST['items'];
+    $total_price = $_POST['total_price'];
+    $status = $_POST['status'];
 
+    $sql = "INSERT INTO orders 
+            (customer_name, table_number, items, total_price, status)
+            VALUES 
+            ('$customer_name', '$table_number', '$items', '$total_price', '$status')";
+
+    $pdo->query($sql);
+
+    header("Location: index.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
