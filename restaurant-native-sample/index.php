@@ -4,6 +4,10 @@ checkAuth();
 
 //////// get all data (list) /////////////////
 
+$sql = "SELECT * FROM orders";
+$result = $pdo->query($sql);
+$orders = $result->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="ar">
